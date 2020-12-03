@@ -6,6 +6,7 @@ usermod -o -u "$PUID" junv
 
 mkdir -p /app/.caddy
 mkdir -p /app/.cache
+mkdir -p /data
 
 chown -R junv:junv \
          /app \

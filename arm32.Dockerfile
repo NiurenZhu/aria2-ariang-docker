@@ -21,16 +21,16 @@ ENV XDG_CONFIG_HOME=/app/.caddy/config
 RUN adduser -D -u 1000 junv \
   && apk update \
   && apk add runit shadow wget bash curl openrc gnupg aria2 tar --no-cache \
+  && platform=armv6 \
   && caddy_tag=2.2.1 \
-  && wget -N https://github.com/caddyserver/caddy/releases/download/v${caddy_tag}/caddy_${caddy_tag}_linux_amd64.tar.gz \
+  && wget -N https://github.com/caddyserver/caddy/releases/download/v${caddy_tag}/caddy_${caddy_tag}_linux_${platform}.tar.gz \
   && tar -zxvf caddy_*.tar.gz \
   && mv caddy /usr/local/bin/ \
   && rm -rf caddy_*.tar.gz \
   && filebrowser_version=v2.7.0 \
-  && platform=linux-armv6 \
-  && wget -N https://github.com/filebrowser/filebrowser/releases/download/${filebrowser_version}/${platform}-filebrowser.tar.gz \
-  && tar -zxvf ${platform}-filebrowser.tar.gz \
-  && rm -rf ${platform}-filebrowser.tar.gz \
+  && wget -N https://github.com/filebrowser/filebrowser/releases/download/${filebrowser_version}/linux-${platform}-filebrowser.tar.gz \
+  && tar -zxvf linux-${platform}-filebrowser.tar.gz \
+  && rm -rf linux-${platform}-filebrowser.tar.gz \
   && rm LICENSE README.md \
   && wget -N https://bin.equinox.io/c/ekMN3bCZFUn/forego-stable-linux-arm.tgz \
   && tar -zxvf forego-stable-linux-arm.tgz \
